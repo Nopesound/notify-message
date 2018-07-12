@@ -1,4 +1,3 @@
-## Documentation ##
 ![notifyMessage version](http://img.shields.io/badge/notifyMessage-v1.0.0-brightgreen.svg?longCache=true&style=for-the-badge)
 ![license](https://img.shields.io/badge/license-MIT-green.svg?longCache=true&style=for-the-badge)
 ### What is notify message? ###
