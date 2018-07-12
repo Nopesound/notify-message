@@ -8,6 +8,7 @@ There are three ways available:
 * Fixed: Allows to keep the notification open and give the user the possibility to close it.
 * Notification: The notification is displayed and disappears after a period of time set by the user.
 * Readmore: If a text is too large, you can decide to embed a button to view the entire text, while in the notification the first 30 characters are displayed.
+
 ### How can I set the library options? ###
 For the moment the options are as follows:
 * LevelMessage: [levelMessage]
