@@ -23,11 +23,11 @@ function runNotify(options) {
     var messageTitle = options.messageTitle;
     var timer = options.timer;
     var readMoreMessage =
-      readMoreMessage == undefined ||
-      readMoreMessage == null ||
-      readMoreMessage === ""
+      options.readMoreMessage == undefined ||
+      options.readMoreMessage == null ||
+      options.readMoreMessage === ""
         ? "Read more..."
-        : option.readMoreMessage;
+        : options.readMoreMessage;
 
     var typeClass;
 
