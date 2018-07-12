@@ -1,4 +1,6 @@
 ## Documentation ##
+![notifyMessage version](http://img.shields.io/badge/notifyMessage-v1.0.0-brightgreen.svg?longCache=true&style=for-the-badge)
+[![License](https://img.shields.io/badge/License-GPL-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 ### What is notify message? ###
 Notify message it's a simple jquery library for create a simple and light push notification in your website!
 ### How does this work? ###
@@ -15,6 +17,18 @@ For the moment the options are as follows:
 * Message: [message]
 * Message Title: [messageTitle]
 * ReadMoreMessage: [readMoreMessage]
+## Usage
+you will need to include:
+ - The JavaScript file `notifyMessage.js` (or its minified version `notifyMessage.min.js`)
+ - The css file `notifyMessage.css`(or its minified version `notifyMessage.min.css`)
+ 
+### Including files:
+```html
+<link rel="stylesheet" type="text/css" href="notifyMessage.css" />
+
+<script type="text/javascript" src="notifyMessage.js"></script>
+```
+## Options
 #### Message ####
 The message of notification, is required for correct function of library.
 #### Level Message ####
@@ -25,10 +39,12 @@ The level message is the type of message we can display. Notify message allows u
 * warning
 > The default value is notify.
 ##### Example ######
-` runNotify({
+```javascript
+runNotify({
      message: 'Success message text!',
      levelMessage: 'success'
-     });`
+     });
+```
 #### Type ####
 the type of notification display , there are 3 types of notification :
 * fixed
@@ -36,29 +52,35 @@ the type of notification display , there are 3 types of notification :
 * notify
 > The default value is notify.
 ##### Example ######
-` runNotify({
+```javascript
+runNotify({
      message: 'Success message text!',
      levelMessage: 'success',
      type: 'fixed'
-     });`
+     });
+```
 #### Message Title ####
 The title of the notification message, is an option that is used only in the notification type 'readmore', it represents the modal title that is displayed when the link is pressed within the notification.
 ##### Example ######
-` runNotify({
+```javascript
+runNotify({
      message: 'Success message text!',
      levelMessage: 'success',
      type: 'readmore',
      messageTitle: 'Title of modal'
-     });`
+     });
+```
 #### Read more message ####
 Represents the link text that displays the modal, it is only used within the 'readmore' notification type.
 > The default value is 'Read more...'.
 ##### Example ######
-` runNotify({
+```javascript
+runNotify({
      message: 'Success message text!',
      levelMessage: 'success',
      type: 'readmore',
      messageTitle: 'Title of modal',
      readMoreMessage: 'Open the notify!'
-     });`
+     });
+```
   
