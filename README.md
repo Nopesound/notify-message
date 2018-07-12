@@ -32,8 +32,12 @@ You will need to include:
 <script type="text/javascript" src="notifyMessage.js"></script>
 ```
 ## Options
+
 #### Message ####
 The message of notification, is required for correct function of library.
+
+---
+
 #### Level Message ####
 The level message is the type of message we can display. Notify message allows us to display 4 message levels that have different colors in the notification box:
 * notify
@@ -48,6 +52,9 @@ runNotify({
      levelMessage: 'success'
      });
 ```
+
+---
+
 #### Type ####
 the type of notification display , there are 3 types of notification :
 * fixed
@@ -62,6 +69,9 @@ runNotify({
      type: 'fixed'
      });
 ```
+
+---
+
 #### Message Title ####
 The title of the notification message, is an option that is used only in the notification type 'readmore', it represents the modal title that is displayed when the link is pressed within the notification.
 ##### Example ######
@@ -73,6 +83,9 @@ runNotify({
      messageTitle: 'Title of modal'
      });
 ```
+
+---
+
 #### Read more message ####
 Represents the link text that displays the modal, it is only used within the 'readmore' notification type.
 > The default value is 'Read more...'.
