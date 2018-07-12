@@ -1,0 +1,1 @@
+.alertNotify { width: 25%; position: fixed; top: 3%; right: -30%; z-index: 1030; } .allertNotifyButton { position: absolute; top: 1vw; right: 1vw; cursor: pointer; color: currentColor; fill: currentColor; } .allertNotifyReadMore { cursor: pointer; } .allertNotifyReadMore:hover { font-weight: bolder; }
