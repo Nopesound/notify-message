@@ -1,6 +1,6 @@
 ## Documentation ##
 ![notifyMessage version](http://img.shields.io/badge/notifyMessage-v1.0.0-brightgreen.svg?longCache=true&style=for-the-badge)
-![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+![license](http://img.shields.io/github/license/mashape/apistatus.svg?longCache=true&style=for-the-badge)
 ### What is notify message? ###
 Notify message it's a simple jquery library for create a simple and light push notification in your website!
 ### How does this work? ###
@@ -18,7 +18,10 @@ For the moment the options are as follows:
 * Message Title: [messageTitle]
 * ReadMoreMessage: [readMoreMessage]
 ## Usage
-you will need to include:
+Thi library required:
+* JQuery 
+* Bootstrap 4
+You will need to include:
  - The JavaScript file `notifyMessage.js` (or its minified version `notifyMessage.min.js`)
  - The css file `notifyMessage.css`(or its minified version `notifyMessage.min.css`)
  
