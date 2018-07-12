@@ -21,9 +21,10 @@ For the moment the options are as follows:
 Thi library required:
 * JQuery 
 * Bootstrap 4
+
 You will need to include:
- - The JavaScript file `notifyMessage.js` (or its minified version `notifyMessage.min.js`)
- - The css file `notifyMessage.css`(or its minified version `notifyMessage.min.css`)
+* The JavaScript file `notifyMessage.js` (or its minified version `notifyMessage.min.js`)
+* The css file `notifyMessage.css`(or its minified version `notifyMessage.min.css`)
  
 ### Including files:
 ```html
