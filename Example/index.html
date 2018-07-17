@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Notify message example page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="lib/notifyMessage/css/notifyMessage.css" />
+
+    <script src="lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="lib/notifyMessage/js/notifyMessage.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid mt-3">
+        <div class="card-deck">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Example default</h5>
+                    <p class="card-text">
+                        This is an example of default of notifyMessage use.
+                    </p>
+                    <input type="button" onclick="runNotify({
+                    type: 'notify',
+                    message: 'Message of notify!'
+                    });" class="btn btn-primary m-2" title="Test default" value="Test default"></input>
+                    <input type="button" onclick="runNotify({
+                        type: 'notify',
+                        message: 'Message of notify!',
+                        levelMessage: 'success'
+                        });" class="btn btn-primary m-2" title="Test default" value="Test success"></input>
+                    <input type="button" onclick="runNotify({
+                            type: 'notify',
+                            message: 'Message of notify!',
+                            levelMessage: 'warning'
+                            });" class="btn btn-primary m-2" title="Test default" value="Test warning"></input>
+                    <input type="button" onclick="runNotify({
+                                type: 'notify',
+                                message: 'Message of notify!',
+                                levelMessage: 'error'
+                                });" class="btn btn-primary m-2" title="Test default" value="Test error"></input>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Example default with timer</h5>
+                    <div class="card-text form-group">
+                        <p>This is an example of default of notifyMessage use with timer option.</p>
+                        <input type="text" id="txtTimer" class="form-control" placeholder="Enter timer in seconds">
+                    </div>
+                    <input type="button" onclick="runNotify({
+                        type: 'notify',
+                        message: 'Message of notify!',
+                        timer: $('#txtTimer').val() * 1000
+                        });" class="btn btn-primary" title="Test default" value="Test"></input>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Example fixed</h5>
+                    <p class="card-text">
+                        This is an example of fixed notifyMessage use.
+                    </p>
+                    <input type="button" onclick="runNotify({
+                        type: 'fixed',
+                        message: 'Message of notify!'
+                        });" class="btn btn-primary" title="Test fixed" value="Test"></input>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Example readmore</h5>
+                    <p class="card-text">
+                        This is an example of readmore notifyMessage use.
+                    </p>
+                    <input type="button" onclick="runNotify({
+                            type: 'readmore',
+                            messageTitle: 'Message title',
+    message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                            });" class="btn btn-primary" title="Test readmore" value="Test"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
