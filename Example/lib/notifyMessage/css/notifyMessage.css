@@ -1,24 +1,24 @@
 ﻿.alertNotify {
-    width: 25%;
-    position: fixed;
-    top: 3%;
-    right: -30%;
-    z-index: 1030;
+  width: 30rem;
+  position: fixed;
+  top: 1rem;
+  right: -30rem;
+  z-index: 1030;
 }
-
+/*con una dimensione di carattere dell'elemento principale di 16px, 10rem sarebbe pari a 160px, cioè 10 x 16 = 160.*/
 .allertNotifyButton {
-    position: absolute;
-    top: 1vw;
-    right: 1vw;
-    cursor: pointer;
-    color: currentColor;
-    fill: currentColor;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+  color: currentColor;
+  fill: currentColor;
 }
 
 .allertNotifyReadMore {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-    .allertNotifyReadMore:hover {
-        font-weight: bolder;
-    }
+.allertNotifyReadMore:hover {
+  font-weight: bolder;
+}
