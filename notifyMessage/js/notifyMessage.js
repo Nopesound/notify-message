@@ -1,5 +1,5 @@
-﻿/*notifyMessage 1.0.0
-Copyright 2018 a project by Ivan Persiani
+﻿/*notifyMessage 1.1.0
+Copyright 2021 a project by Ivan Persiani
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -11,9 +11,9 @@ function runNotify(options) {
   if (
     options == undefined ||
     options == null ||
-    (options.message == undefined ||
-      options.message == null ||
-      options.message === "")
+    options.message == undefined ||
+    options.message == null ||
+    options.message === ""
   ) {
     alert("Error! Read guideline!");
   } else {
@@ -49,8 +49,7 @@ function runNotify(options) {
         break;
     }
     var notifyName = "notificationItem" + $(".notificationItem").length;
-    var notifyNameForJquery =
-      "#notificationItem" + $(".notificationItem").length;
+    var notifyNameForJquery = "#" + notifyName;
     var messageReview = message;
     if (typeMessage === "readmore") {
       messageReview =
@@ -75,7 +74,7 @@ function runNotify(options) {
       "</div>";
     $("body").append(notifyItem);
 
-    $(notifyNameForJquery).animate({ right: "1%" }, 500);
+    $(notifyNameForJquery).animate({ right: "1rem" }, 500);
 
     if (typeMessage === "fixed") {
       $(notifyNameForJquery).append(
@@ -92,6 +91,7 @@ function runNotify(options) {
       if (messageTitle == undefined || messageTitle == null) {
         messageTitle = levelMessage;
       }
+      //TODO: Remove Bootstrap dependency
       var modalNameForJquery = notifyNameForJquery + "modal";
       $(notifyNameForJquery).attr("data-toggle", "modal");
       $(notifyNameForJquery).attr("data-target", modalNameForJquery);
@@ -130,17 +130,17 @@ function runNotify(options) {
       }
       $(notifyNameForJquery)
         .delay(parseInt(timer))
-        .queue(next => {
+        .queue((next) => {
           $(notifyNameForJquery).animate(
             {
               top: "90%",
-              opacity: 0
+              opacity: 0,
             },
             1000
           );
           next();
         });
-      setTimeout(function() {
+      setTimeout(function () {
         $(notifyNameForJquery).remove();
       }, parseInt(timer) + 2000);
     }
@@ -150,17 +150,17 @@ function runNotify(options) {
 function CloseNotifyItem(notifyNameForJquery) {
   $(notifyNameForJquery).animate(
     {
-      top: "90%",
-      opacity: 0
+      top: "9rem",
+      opacity: 0,
     },
     1000
   );
-  setTimeout(function() {
+  setTimeout(function () {
     $(notifyNameForJquery).remove();
   }, 2000);
 }
 
 function ReadMoreNotifyItem(modalNameForJquery, notifyNameForJquery) {
-  $(modalNameForJquery).modal();
+  $(modalNameForJquery).modal(); //TODO: Remove bootstrap library
   CloseNotifyItem(notifyNameForJquery);
 }
