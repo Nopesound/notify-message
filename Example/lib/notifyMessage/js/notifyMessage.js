@@ -7,6 +7,8 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+const animationPositionY = "40rem";
+const defaultTimer = 3000;
 function runNotify(options) {
   if (options == undefined || options == null) {
     alert("Error! Read guideline!");
@@ -23,61 +25,25 @@ function runNotify(options) {
         ? "Read more..."
         : options.readMoreMessage;
 
-    var typeClass;
+    var notifyName =
+      "notificationItem" +
+      Math.floor(100000 + Math.random() * 900000).toString();
 
-    switch (levelMessage) {
-      case "notify":
-        typeClass = "alert-primary";
-        break;
-      case "error":
-        typeClass = "alert-danger";
-        break;
-      case "success":
-        typeClass = "alert-success";
-        break;
-      case "warning":
-        typeClass = "alert-warning";
-        break;
-      default:
-        typeClass = "alert-primary";
-        break;
-    }
-    var notifyName = "notificationItem" + $(".notificationItem").length;
-
-    if (typeMessage === "readmore") {
-      message =
-        jQuery
-          .trim(message)
-          .substring(0, 30)
-          .split(" ")
-          .slice(0, -1)
-          .join(" ") +
-        ' <span class="allertNotifyReadMore">' +
-        readMoreMessage +
-        "</span>";
-    }
-
-    var notifyItem =
-      '<div id="' +
-      notifyName +
-      '" class="alert ' +
-      typeClass +
-      ' alertNotify notificationItem">' +
-      message +
-      "</div>";
-
-    $("body").append(notifyItem);
+    $("body").append(
+      GenerateMessageItem(
+        typeMessage,
+        message,
+        notifyName,
+        levelMessage,
+        readMoreMessage
+      )
+    );
     var $notifyElement = $("#" + notifyName);
     $notifyElement.animate({ right: "1rem" }, 500);
 
     if (typeMessage === "fixed") {
-      $notifyElement.append(
-        '<i class="allertNotifyButton" ><svg viewBox="0 0 25 25" width="15px" height="15px">' +
-          '<path fill="currentcolor" d = "M16.043,11.667L22.609,5.1c0.963-0.963,0.963-2.539,0-3.502l-0.875-0.875c-0.963-0.964-2.539-0.964-3.502,0L11.666,7.29  L5.099,0.723c-0.962-0.963-2.538-0.963-3.501,0L0.722,1.598c-0.962,0.963-0.962,2.539,0,3.502l6.566,6.566l-6.566,6.567  c-0.962,0.963-0.962,2.539,0,3.501l0.876,0.875c0.963,0.963,2.539,0.963,3.501,0l6.567-6.565l6.566,6.565  c0.963,0.963,2.539,0.963,3.502,0l0.875-0.875c0.963-0.963,0.963-2.539,0-3.501L16.043,11.667z" />' +
-          "Sorry, your browser does not support inline SVG." +
-          "</svg ></i>"
-      );
-      $(".allertNotifyButton").on("click", function () {
+      $notifyElement.append(GenerateCloseButton());
+      $(".notificationItem .allertNotifyButton").on("click", function () {
         CloseNotifyItem($notifyElement);
       });
     } else if (typeMessage === "readmore") {
@@ -86,41 +52,27 @@ function runNotify(options) {
       }
       //TODO: Remove Bootstrap dependency
       var modalName = notifyName + "modal";
-      $notifyElement.attr("data-toggle", "modal");
-      $notifyElement.attr("data-target", modalName);
-      var modalItem =
-        '<div id="' +
-        modalName +
-        '" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"> ' +
-        '<div class="modal-dialog modal-lg"> ' +
-        '<div class="modal-content">' +
-        '<div class="modal-header"> ' +
-        '<h5 class="modal-title" id="ModalLabel">' +
-        messageTitle +
-        "</h5> " +
-        '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> ' +
-        '<span aria-hidden="true">&times;</span>' +
-        "</button>" +
-        "</div>" +
-        '<div class="modal-body">' +
-        message +
-        "</div>" +
-        "</div> " +
-        "</div> " +
-        "</div>";
-      $("body").append(modalItem);
+      $("body").append(GenerateModal(modalName, messageTitle, message));
       var $modalElement = $("#" + modalName);
-      $(".allertNotifyReadMore").on("click", function () {
+
+      $(".notificationItem .allertNotifyReadMore").on("click", function () {
         ReadMoreNotifyItem($modalElement, $notifyElement);
       });
+      $(".modalNotifyContent .header .allertNotifyButton").on(
+        "click",
+        function () {
+          CloseNotifyItem($modalElement);
+          $(".overlay").remove();
+        }
+      );
     } else {
       if (timer == undefined || timer == null) {
-        timer = "3000";
+        timer = defaultTimer;
       }
       $notifyElement.delay(parseInt(timer)).queue((next) => {
         $notifyElement.animate(
           {
-            top: "40rem",
+            top: animationPositionY,
             opacity: 0,
           },
           1000
@@ -137,7 +89,7 @@ function runNotify(options) {
 function CloseNotifyItem($notify) {
   $notify.animate(
     {
-      top: "40rem",
+      top: animationPositionY,
       opacity: 0,
     },
     1000
@@ -146,8 +98,82 @@ function CloseNotifyItem($notify) {
     $notify.remove();
   }, 2000);
 }
-
 function ReadMoreNotifyItem($modal, $notify) {
-  $modal.modal(); //TODO: Remove bootstrap library
+  $modal.show();
+  $(".overlay").show();
   CloseNotifyItem($notify);
+}
+
+function GenerateModal(name, title, message, levelMessage) {
+  return (
+    '<div class="overlay" ></div>' +
+    '<div id="' +
+    name +
+    '" class="modalNotify ' +
+    GetLevelMessage(levelMessage) +
+    '" tabindex="-1" role="dialog" aria-labelledby="' +
+    name +
+    '" aria-hidden="true" > ' +
+    '<div class="modalNotifyContent ">' +
+    '<div class="header"> ' +
+    '<h3 class="modal-title">' +
+    title +
+    "</h3> " +
+    GenerateCloseButton() +
+    "</div>" +
+    '<div class="body">' +
+    message +
+    "</div>" +
+    "</div>" +
+    "</div>"
+  );
+}
+function GenerateMessageItem(
+  typeMessage,
+  message,
+  notifyName,
+  levelMessage,
+  readMoreMessage
+) {
+  return (
+    '<div id="' +
+    notifyName +
+    '" class="alertNotify ' +
+    GetLevelMessage(levelMessage) +
+    ' notificationItem">' +
+    (typeMessage === "readmore"
+      ? jQuery
+          .trim(message)
+          .substring(0, 30)
+          .split(" ")
+          .slice(0, -1)
+          .join(" ") +
+        ' <span class="allertNotifyReadMore">' +
+        readMoreMessage +
+        "</span>"
+      : message) +
+    "</div>"
+  );
+}
+function GenerateCloseButton() {
+  return (
+    '<i class="allertNotifyButton" ><svg viewBox="0 0 25 25" width="15px" height="15px">' +
+    '<path fill="currentcolor" d = "M16.043,11.667L22.609,5.1c0.963-0.963,0.963-2.539,0-3.502l-0.875-0.875c-0.963-0.964-2.539-0.964-3.502,0L11.666,7.29  L5.099,0.723c-0.962-0.963-2.538-0.963-3.501,0L0.722,1.598c-0.962,0.963-0.962,2.539,0,3.502l6.566,6.566l-6.566,6.567  c-0.962,0.963-0.962,2.539,0,3.501l0.876,0.875c0.963,0.963,2.539,0.963,3.501,0l6.567-6.565l6.566,6.565  c0.963,0.963,2.539,0.963,3.502,0l0.875-0.875c0.963-0.963,0.963-2.539,0-3.501L16.043,11.667z" />' +
+    "Sorry, your browser does not support inline SVG." +
+    "</svg ></i>"
+  );
+}
+function GetLevelMessage(levelMessage) {
+  switch (levelMessage) {
+    case "notify":
+      return "notify";
+    case "error":
+      return "error";
+    case "success":
+      return "success";
+    case "warning":
+      return "warning";
+    default:
+      return "notify";
+  }
 }

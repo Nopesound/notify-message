@@ -1,11 +1,45 @@
-﻿.alertNotify {
+﻿/*.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}*/
+
+.alertNotify {
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
   width: 30rem;
   position: fixed;
   top: 1rem;
   right: -30rem;
   z-index: 1030;
 }
-/*con una dimensione di carattere dell'elemento principale di 16px, 10rem sarebbe pari a 160px, cioè 10 x 16 = 160.*/
+
+.alertNotify.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+.alertNotify.notify {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+
+.alertNotify.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alertNotify.warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
 .allertNotifyButton {
   position: absolute;
   top: 0.5rem;
@@ -21,4 +55,54 @@
 
 .allertNotifyReadMore:hover {
   font-weight: bolder;
+}
+
+.modalNotify {
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  width: 30rem;
+  height: auto;
+  z-index: 1050;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  display: none;
+}
+
+.modalNotify.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+.modalNotify.notify {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+
+.modalNotify.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.modalNotify.warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+.overlay {
+  opacity: 0.4;
+  background-color: #000000;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1040;
+  width: 100%;
+  height: 100%;
+  display: none;
 }
