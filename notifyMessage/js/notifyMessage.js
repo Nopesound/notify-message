@@ -9,6 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 const animationPositionY = "40rem";
 const defaultTimer = 3000;
+
 function runNotify(options) {
   if (options == undefined || options == null) {
     alert("Error! Read guideline!");
@@ -39,7 +40,12 @@ function runNotify(options) {
       )
     );
     var $notifyElement = $("#" + notifyName);
-    $notifyElement.animate({ right: "1rem" }, 500);
+    $notifyElement.animate(
+      {
+        right: "1rem",
+      },
+      500
+    );
 
     if (typeMessage === "fixed") {
       $notifyElement.append(GenerateCloseButton());
@@ -50,7 +56,6 @@ function runNotify(options) {
       if (messageTitle == undefined || messageTitle == null) {
         messageTitle = levelMessage;
       }
-      //TODO: Remove Bootstrap dependency
       var modalName = notifyName + "modal";
       $("body").append(GenerateModal(modalName, messageTitle, message));
       var $modalElement = $("#" + modalName);
@@ -66,7 +71,7 @@ function runNotify(options) {
         }
       );
     } else {
-      if (timer == undefined || timer == null) {
+      if (timer === undefined || timer === null) {
         timer = defaultTimer;
       }
       $notifyElement.delay(parseInt(timer)).queue((next) => {
@@ -98,6 +103,7 @@ function CloseNotifyItem($notify) {
     $notify.remove();
   }, 2000);
 }
+
 function ReadMoreNotifyItem($modal, $notify) {
   $modal.show();
   $(".overlay").show();
@@ -128,6 +134,7 @@ function GenerateModal(name, title, message, levelMessage) {
     "</div>"
   );
 }
+
 function GenerateMessageItem(
   typeMessage,
   message,
@@ -155,6 +162,7 @@ function GenerateMessageItem(
     "</div>"
   );
 }
+
 function GenerateCloseButton() {
   return (
     '<i class="allertNotifyButton" ><svg viewBox="0 0 25 25" width="15px" height="15px">' +
@@ -163,6 +171,7 @@ function GenerateCloseButton() {
     "</svg ></i>"
   );
 }
+
 function GetLevelMessage(levelMessage) {
   switch (levelMessage) {
     case "notify":
