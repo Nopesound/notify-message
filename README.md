@@ -1,5 +1,5 @@
-![notifyMessage version](http://img.shields.io/badge/notifyMessage-v1.0.0-brightgreen.svg?longCache=true&style=for-the-badge)
-![license](https://img.shields.io/badge/license-MIT-green.svg?longCache=true&style=for-the-badge)
+https://img.shields.io/github/v/release/Silentgrave/notifyMessage?color=green&style=flat-square
+https://img.shields.io/github/license/silentgrave/notifymessage?style=flat-square
 
 ### What is notify message?
 
