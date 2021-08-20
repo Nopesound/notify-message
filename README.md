@@ -16,10 +16,10 @@ For the moment the options are as follows:
 * Message: [message]
 * Message Title: [messageTitle]
 * ReadMoreMessage: [readMoreMessage]
+* Timer: [timer]
 ## Usage
 Thi library required:
 * JQuery 
-* Bootstrap 4
 
 You will need to include:
 * The JavaScript file `notifyMessage.js` (or its minified version `notifyMessage.min.js`)
@@ -100,3 +100,16 @@ runNotify({
      });
 ```
   
+---
+
+#### Timer ####
+Represents the time that the notification remains visible.
+> This option is not available for the fixed message type and read more. The default value of timer is 3 seconds.
+##### Example ######
+```javascript
+runNotify({
+     message: 'Success message text!',
+     levelMessage: 'success',
+     timer: 5000
+     });
+```
