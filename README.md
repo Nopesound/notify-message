@@ -1,4 +1,4 @@
-![notifyMessage version](https://img.shields.io/github/v/release/Silentgrave/notifyMessage?color=brightgreen&style=flat-square)
+![notifyMessage version](https://img.shields.io/github/v/release/silentgrave/notifyMessage?color=brightgreen&style=flat-square)
 ![license](https://img.shields.io/github/license/silentgrave/notifymessage?style=flat-square)
 ### What is notify message? ###
 Notify message it's a simple jquery library for create a simple and light push notification in your website!
