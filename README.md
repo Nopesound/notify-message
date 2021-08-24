@@ -117,3 +117,4 @@ runNotify({
      timer: 5000
      });
 ```
+[I'm an inline-style link](https://github.com/silentgrave/notify-message/blob/8289f5309444084eb9a6dc1bcf4e726b5f440eb4/Example/index.html) 
