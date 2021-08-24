@@ -31,9 +31,9 @@ You will need to include:
  
 ### Including files:
 ```html
-<link rel="stylesheet" type="text/css" href="notifyMessage.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/silentgrave/notify-message/notifyMessage/css/notifyMessage.min.css" />
 
-<script type="text/javascript" src="notifyMessage.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/silentgrave/notify-message/notifyMessage/js/notifyMessage.js"></script>
 ```
 ## Options
 
