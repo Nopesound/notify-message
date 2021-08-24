@@ -20,7 +20,7 @@ For the moment the options are as follows:
 * Message Title: [messageTitle]
 * ReadMoreMessage: [readMoreMessage]
 * Timer: [timer]
-*
+
 ## Usage
 Thi library required:
 * JQuery 
