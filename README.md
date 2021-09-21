@@ -20,6 +20,7 @@ For the moment the options are as follows:
 * Message Title: [messageTitle]
 * ReadMoreMessage: [readMoreMessage]
 * Timer: [timer]
+* Position: [position]
 
 ## Usage
 Thi library required:
@@ -117,3 +118,24 @@ runNotify({
      timer: 5000
      });
 ```
+
+---
+
+#### Position ####
+Represents the positioning of the notification within the page, the values that can be chosen are:
+* top-right
+* bottom-right
+* top-left
+* bottom-left
+> The default value is top-right.
+##### Example ######
+```javascript
+runNotify({
+     message: 'Success message text!',
+     levelMessage: 'success',
+     type: 'fixed',
+     position: 'top-left'
+     });
+```
+
+---
