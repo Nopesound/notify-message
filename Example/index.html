@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Notify message example page</title>
+    <title>Notify message example page v. 1.2.0</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="lib/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="lib/notifyMessage/css/notifyMessage.css" />
@@ -42,6 +42,34 @@
                                 message: 'Message of notify!',
                                 levelMessage: 'error'
                                 });" class="btn btn-primary m-2" title="Test default" value="Test error"></input>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Example default</h5>
+                    <p class="card-text">
+                        This is an example of position of notifyMessage.
+                    </p>
+                    <input type="button" onclick="runNotify({
+                    type: 'notify',
+                    message: 'Message of notify!',
+                        position: 'top-right'
+                    });" class="btn btn-primary m-2" title="Top right" value="Top right"></input>
+                    <input type="button" onclick="runNotify({
+                        type: 'notify',
+                        message: 'Message of notify!',
+                        position: 'top-left'
+                        });" class="btn btn-primary m-2" title="Top left" value="Top left"></input>
+                    <input type="button" onclick="runNotify({
+                            type: 'notify',
+                            message: 'Message of notify!',
+                        position: 'bottom-right'
+                            });" class="btn btn-primary m-2" title="Footer right" value="Bottom right"></input>
+                    <input type="button" onclick="runNotify({
+                                type: 'notify',
+                                message: 'Message of notify!',
+                        position: 'bottom-left'
+                                });" class="btn btn-primary m-2" title="Footer left" value="Footer left"></input>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">

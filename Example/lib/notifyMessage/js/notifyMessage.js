@@ -1,4 +1,4 @@
-﻿/*notifyMessage 1.1.0
+﻿/*notifyMessage 1.2.0
 Copyright 2021 a project by Ivan Persiani
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -19,6 +19,7 @@ function runNotify(options) {
     var message = options.message;
     var messageTitle = options.messageTitle;
     var timer = options.timer;
+    var position = options.position;
     var readMoreMessage =
       options.readMoreMessage == undefined ||
       options.readMoreMessage == null ||
@@ -36,21 +37,16 @@ function runNotify(options) {
         message,
         notifyName,
         levelMessage,
-        readMoreMessage
+        readMoreMessage,
+        position
       )
     );
     var $notifyElement = $("#" + notifyName);
-    $notifyElement.animate(
-      {
-        right: "1rem",
-      },
-      500
-    );
-
+    OpenNotification($notifyElement, position);
     if (typeMessage === "fixed") {
       $notifyElement.append(GenerateCloseButton());
       $(".notificationItem .allertNotifyButton").on("click", function () {
-        CloseNotifyItem($notifyElement);
+        CloseNotification($notifyElement, position);
       });
     } else if (typeMessage === "readmore") {
       if (messageTitle == undefined || messageTitle == null) {
@@ -61,12 +57,12 @@ function runNotify(options) {
       var $modalElement = $("#" + modalName);
 
       $(".notificationItem .allertNotifyReadMore").on("click", function () {
-        ReadMoreNotifyItem($modalElement, $notifyElement);
+        ReadMoreNotifyItem($modalElement, $notifyElement, position);
       });
       $(".modalNotifyContent .header .allertNotifyButton").on(
         "click",
         function () {
-          CloseNotifyItem($modalElement);
+          CloseNotification($modalElement, position);
           $(".overlay").remove();
         }
       );
@@ -75,13 +71,8 @@ function runNotify(options) {
         timer = defaultTimer;
       }
       $notifyElement.delay(parseInt(timer)).queue((next) => {
-        $notifyElement.animate(
-          {
-            top: animationPositionY,
-            opacity: 0,
-          },
-          1000
-        );
+        CloseNotification($notifyElement, position);
+
         next();
       });
       setTimeout(function () {
@@ -91,23 +82,64 @@ function runNotify(options) {
   }
 }
 
-function CloseNotifyItem($notify) {
-  $notify.animate(
-    {
-      top: animationPositionY,
-      opacity: 0,
-    },
-    1000
-  );
+function CloseNotification($notify, position) {
+  switch (position) {
+    case "top-right":
+      $notify.animate(
+        {
+          top: animationPositionY,
+          opacity: 0,
+        },
+        1000
+      );
+      break;
+    case "bottom-right":
+      $notify.animate(
+        {
+          bottom: animationPositionY,
+          opacity: 0,
+        },
+        1000
+      );
+      break;
+    case "top-left":
+      $notify.animate(
+        {
+          top: animationPositionY,
+          opacity: 0,
+        },
+        1000
+      );
+      break;
+    case "bottom-left":
+      $notify.animate(
+        {
+          bottom: animationPositionY,
+          opacity: 0,
+        },
+        1000
+      );
+      break;
+    default:
+      $notify.animate(
+        {
+          top: animationPositionY,
+          opacity: 0,
+        },
+        1000
+      );
+      break;
+  }
+
   setTimeout(function () {
     $notify.remove();
   }, 2000);
 }
 
-function ReadMoreNotifyItem($modal, $notify) {
+function ReadMoreNotifyItem($modal, $notify, position) {
   $modal.show();
   $(".overlay").show();
-  CloseNotifyItem($notify);
+  CloseNotification($notify, position);
 }
 
 function GenerateModal(name, title, message, levelMessage) {
@@ -134,18 +166,20 @@ function GenerateModal(name, title, message, levelMessage) {
     "</div>"
   );
 }
-
 function GenerateMessageItem(
   typeMessage,
   message,
   notifyName,
   levelMessage,
-  readMoreMessage
+  readMoreMessage,
+  position
 ) {
   return (
     '<div id="' +
     notifyName +
     '" class="alertNotify ' +
+    GetPosition(position) +
+    " " +
     GetLevelMessage(levelMessage) +
     ' notificationItem">' +
     (typeMessage === "readmore"
@@ -184,5 +218,65 @@ function GetLevelMessage(levelMessage) {
       return "warning";
     default:
       return "notify";
+  }
+}
+
+function GetPosition(position) {
+  switch (position) {
+    case "top-right":
+      return "top-right";
+    case "top-left":
+      return "top-left";
+    case "bottom-right":
+      return "bottom-right";
+    case "bottom-left":
+      return "bottom-left";
+    default:
+      return "top-right";
+  }
+}
+
+function OpenNotification($notifyElement, position) {
+  switch (position) {
+    case "top-right":
+      $notifyElement.animate(
+        {
+          right: "1rem",
+        },
+        500
+      );
+      break;
+    case "bottom-right":
+      $notifyElement.animate(
+        {
+          right: "1rem",
+        },
+        500
+      );
+      break;
+    case "top-left":
+      $notifyElement.animate(
+        {
+          left: "1rem",
+        },
+        500
+      );
+      break;
+    case "bottom-left":
+      $notifyElement.animate(
+        {
+          left: "1rem",
+        },
+        500
+      );
+      break;
+    default:
+      $notifyElement.animate(
+        {
+          right: "1rem",
+        },
+        500
+      );
+      break;
   }
 }
